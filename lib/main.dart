@@ -1,9 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:roast_coffee/controllers/auth_provider.dart';
 import 'package:roast_coffee/core/utils/theme.dart';
+import 'package:roast_coffee/views/home_screen/home_screen.dart';
+import 'package:roast_coffee/views/login_screen.dart/login_screen.dart';
 import 'package:roast_coffee/views/splash_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(create: (_) => AuthProvider()), // AuthProvider
+      // UserProvider
+    ],
+    child: MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -16,7 +26,11 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Roast coffee',
       theme: AppThemes.themeData,
-      home: SplashScreen(),
+      routes: {
+        '/': (context) => SplashScreen(),
+        '/login': (context) => LoginScreen(),
+        '/home': (context) => HomeScreen(),
+      },
     );
   }
 }

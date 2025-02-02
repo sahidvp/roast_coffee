@@ -8,4 +8,8 @@ class Appcolors {
   static const Color text = Color.fromRGBO(110, 131, 130, 1);
   static const Color yellow = Color.fromRGBO(206, 172, 109, 1);
   static const Color green = Color.fromRGBO(206, 172, 109, 1);
+  static const Color black = Colors.black;
+  static const Color error =  Color.fromARGB(255, 233, 96, 96);
+
+
 }
