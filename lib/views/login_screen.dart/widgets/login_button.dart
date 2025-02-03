@@ -3,14 +3,15 @@ import 'package:roast_coffee/core/utils/colors.dart';
 import 'package:roast_coffee/core/utils/media_query_util.dart';
 
 class LoginButton extends StatelessWidget {
-  const LoginButton({
-    super.key,
-    required this.buttonname,
-    required this.onPressed,
-  });
+  const LoginButton(
+      {super.key,
+      required this.buttonname,
+      required this.onPressed,
+      required this.isLoading});
 
   final String buttonname;
   final VoidCallback onPressed;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -31,11 +32,13 @@ class LoginButton extends StatelessWidget {
               shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(10))),
               backgroundColor: Appcolors.primary),
-          child: Text(
-            buttonname,
-            style:
-                TextStyle(color: Appcolors.white, fontWeight: FontWeight.w700),
-          ),
+          child: isLoading
+              ? CircularProgressIndicator()
+              : Text(
+                  buttonname,
+                  style: TextStyle(
+                      color: Appcolors.white, fontWeight: FontWeight.w700),
+                ),
         ),
       ),
     );

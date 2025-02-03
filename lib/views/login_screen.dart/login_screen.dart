@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:roast_coffee/controllers/auth_provider.dart';
 import 'package:roast_coffee/core/utils/colors.dart';
 import 'package:roast_coffee/core/utils/media_query_util.dart';
-import 'package:roast_coffee/views/login_screen.dart/widgets/buil_login_onpress.dart';
 import 'package:roast_coffee/views/login_screen.dart/widgets/custom_text_field.dart';
-import 'package:roast_coffee/views/login_screen.dart/widgets/login_button.dart';
 import 'package:roast_coffee/views/login_screen.dart/widgets/login_widgets.dart';
+
+import 'widgets/reactive_login_button.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
@@ -41,27 +39,25 @@ class LoginScreen extends StatelessWidget {
                 Column(
                   children: [
                     CustomTextField(
-                      sw: sw,
-                      isPassword: false,
-                      hintText: "Username",
-                      controller: usernameController,
-                    ),
+                        sw: sw,
+                        isPassword: false,
+                        hintText: "Username",
+                        controller: usernameController),
                     SizedBox(height: sh * 0.02),
                     CustomTextField(
-                      sw: sw,
-                      isPassword: true,
-                      hintText: "Password",
-                      controller: passwordController,
-                    ),
+                        sw: sw,
+                        isPassword: true,
+                        hintText: "Password",
+                        controller: passwordController),
                   ],
                 ),
                 forgotPasswordText(sh, sw),
                 SizedBox(height: sh * 0.02),
-                LoginButton(
-                  buttonname: "Login",
-                  onPressed: () => loginOnpress(_formKey, context,
-                      usernameController.text, passwordController.text),
-                ),
+                reactiveLoginButton(
+                    buttonName: "Login",
+                    formKey: _formKey,
+                    username: usernameController.text,
+                    password: passwordController.text),
                 SizedBox(height: sh * 0.03),
                 signUpText(),
                 SizedBox(height: sh * 0.02),
@@ -73,4 +69,3 @@ class LoginScreen extends StatelessWidget {
     );
   }
 }
-

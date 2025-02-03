@@ -26,6 +26,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Roast coffee',
       theme: AppThemes.themeData,
+      initialRoute: "/",
       routes: {
         '/': (context) => SplashScreen(),
         '/login': (context) => LoginScreen(),

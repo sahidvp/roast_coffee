@@ -6,7 +6,7 @@ class AuthService {
   final String _url = 'https://mt.diodeinfosolutions.com/api/login';
   final FlutterSecureStorage _storage = FlutterSecureStorage();
 
-  Future<String?> login(String username, String password) async {
+  Future<String> login(String username, String password) async {
     try {
       final response = await http.post(
         Uri.parse(_url),
@@ -19,7 +19,7 @@ class AuthService {
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
         String token = data['auth_token'];
-        print(token.toString()); // Assuming the response contains a 'token'
+
         await _storage.write(key: 'auth_token', value: token);
         return token;
       } else {

@@ -9,7 +9,6 @@ class Appcolors {
   static const Color yellow = Color.fromRGBO(206, 172, 109, 1);
   static const Color green = Color.fromRGBO(206, 172, 109, 1);
   static const Color black = Colors.black;
-  static const Color error =  Color.fromARGB(255, 233, 96, 96);
-
-
+  static const Color error = Color.fromARGB(255, 233, 96, 96);
+  static const Color success = Color.fromARGB(255, 25, 197, 114);
 }
