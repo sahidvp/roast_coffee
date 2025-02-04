@@ -6,4 +6,5 @@ class AppIcons {
   static const IconData password = IconsaxPlusLinear.lock;
   static const IconData settings = IconsaxPlusLinear.setting;
   static const IconData searchFilter = IconsaxPlusLinear.setting_4;
+  static const IconData viewAllIcon = IconsaxPlusLinear.arrow_right_3;
 }

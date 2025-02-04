@@ -11,4 +11,5 @@ class Appcolors {
   static const Color black = Colors.black;
   static const Color error = Color.fromARGB(255, 233, 96, 96);
   static const Color success = Color.fromARGB(255, 25, 197, 114);
+  static const Color shadow = Color.fromRGBO(53, 107, 105, 0.3);
 }

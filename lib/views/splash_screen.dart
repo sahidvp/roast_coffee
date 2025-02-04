@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:roast_coffee/core/utils/colors.dart';
+import 'package:roast_coffee/core/utils/media_query_util.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -19,11 +20,13 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void _navigateToHome() async {
     await Future.delayed(const Duration(seconds: 4));
-    Navigator.pushReplacementNamed(context, "/login");
+   Navigator.pushReplacementNamed(context, "/login");
   }
 
   @override
   Widget build(BuildContext context) {
+    final sw = MediaQueryUtil.screenWidth(context);
+
     return Scaffold(
       backgroundColor: Appcolors.primary,
       body: Stack(
@@ -52,7 +55,7 @@ class _SplashScreenState extends State<SplashScreen> {
           // Top SVG (appears after delay)
           Positioned(
             top: 20,
-            left: 360,
+            left: sw,
             child: SvgPicture.asset(
               "assets/images/Group.svg",
               height: 400,
