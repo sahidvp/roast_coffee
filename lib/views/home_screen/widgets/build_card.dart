@@ -1,15 +1,20 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:roast_coffee/core/utils/colors.dart';
+import 'package:roast_coffee/models/product_model.dart';
 
-Widget buildCards(double sw, double sh, String title, String imageUrl) {
+Widget buildCards(double sw, double sh, ProductModel product) {
   return Container(
-    width: sw * 0.4, // Adjust the width as needed
+    width: sw * 0.4,
+
+    // Adjust the width as needed
     margin: EdgeInsets.symmetric(
       horizontal: sw * 0.02,
     ),
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(sw * 0.03),
-      color: Colors.white,
+      color: Appcolors.white,
       boxShadow: [
         BoxShadow(
           color: Appcolors.shadow,
@@ -20,7 +25,9 @@ Widget buildCards(double sw, double sh, String title, String imageUrl) {
       ],
     ),
     child: Padding(
-      padding: EdgeInsets.all(sw * .02),
+      padding: EdgeInsets.all(
+        sw * .02,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -28,18 +35,28 @@ Widget buildCards(double sw, double sh, String title, String imageUrl) {
             padding: EdgeInsets.all(0),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(sw * .015),
-              child: Image.network(
-                imageUrl,
+              child: CachedNetworkImage(
+                imageUrl: product.imageUrl ??
+                    "https://images.unsplash.com/photo-1578775887804-699de7086ff9",
                 fit: BoxFit.cover,
+
                 height: sh * .1, // Adjust the height as needed
                 width: double.infinity,
+                errorWidget: (context, error, stackTrace) {
+                  return Container(
+                    color: Appcolors.text,
+                    child: Center(
+                      child: Icon(IconsaxPlusBold.image),
+                    ),
+                  );
+                },
               ),
             ),
           ),
           Padding(
             padding: EdgeInsets.only(top: sw * .02),
             child: Text(
-              title,
+              product.name!,
               style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w500,
@@ -57,23 +74,23 @@ Widget buildCards(double sw, double sh, String title, String imageUrl) {
                     size: 13,
                   ),
                   Text(
-                    "4.8",
+                    " ${product.rating.toString()}",
                     style: TextStyle(color: Appcolors.primary2),
                   ),
                   Text(
-                    "(125)",
+                    " (${product.ratingCount.toString()})",
                     style: TextStyle(fontSize: 10, color: Appcolors.primary2),
                   )
                 ],
               ),
               Text(
-                "16 min",
+                product.makingTime.toString(),
                 style: TextStyle(fontSize: 10, color: Appcolors.primary2),
               )
             ],
           ),
           Text(
-            "BHD 18.000",
+            "${product.currency} ${product.price}",
             style: TextStyle(
                 color: Appcolors.yellow,
                 fontSize: 13,

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:roast_coffee/common_widgets/success_snackbar.dart';
 import 'package:roast_coffee/core/services/auth_servies.dart';
 
 class AuthProvider with ChangeNotifier {

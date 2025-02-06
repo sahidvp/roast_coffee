@@ -15,7 +15,7 @@ loginOnpress(
         .login(usernameController, passwordController);
 
     if (success) {
-      Navigator.pushReplacementNamed(context, "/home");
+      Navigator.pushReplacementNamed(context, "/navbar");
       succesSnackbar(context);
     } else {
       // ignore: use_build_context_synchronously
